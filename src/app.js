@@ -8,6 +8,7 @@ require("./utils/passport");
 
 const middlewares = require('./middlewares');
 const authRoute = require('./routes/auth.route')
+const userRoute = require('./routes/user.route')
 
 const app = express();
 
@@ -23,7 +24,8 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/api/v1', api);
+app.use('/api/v1', authRoute);
+app.use('/api/v1', userRoute);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
